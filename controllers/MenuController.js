@@ -24,6 +24,10 @@ const inquirer = require('inquirer');
          case "Add new contact":
            this.addContact();
            break;
+         case "Get Date":
+           this.getDate();
+           return new Date("2018-11-25T12:00:00Z");
+           break;
          case "Exit":
            this.exit();
          default:
@@ -36,32 +40,17 @@ const inquirer = require('inquirer');
      });
 }
 
-  getDate(){
-    console.log('Chose a date!');
-    inquirer.prompt(this.mainMenuChoice).then((response) => {
-      console.log(response)
-      switch (response.mainMenuChoice) {
-        case "Get Date":
-          this.timestamp();
-          break;
-        case "Exit":
-          this.exit()
-        default:
-        console.log("Invalid input");
-        this.main();
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-  }
-
    clear(){ /* method definition */ }
     addContact(){
          this.clear();
          console.log('addContact called');
          this.main();
        }
+    getDate() {
+          this.clear();
+          console.log('getDate called');
+          this.main();
+    }
 
       exit(){
          console.log("Thanks for using AddressBloc!");
