@@ -38,11 +38,14 @@ const inquirer = require('inquirer');
 
   getDate(){
     console.log('Chose a date!');
-    inquirer.prompt(this.mainMenuChoice).then((response)) => {
+    inquirer.prompt(this.mainMenuChoice).then((response) => {
+      console.log(response)
       switch (response.mainMenuChoice) {
-        case "Add new date":
-          this.newDate();
+        case "Get Date":
+          this.timestamp();
           break;
+        case "Exit":
+          this.exit()
         default:
         console.log("Invalid input");
         this.main();
