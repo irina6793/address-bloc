@@ -9,6 +9,7 @@ const inquirer = require('inquirer');
            message: "Please choose from an option below: ",
            choices: [
              "Add new contact",
+             "Get Date",
              "Exit"
            ]
          }
@@ -33,6 +34,23 @@ const inquirer = require('inquirer');
      .catch((err) => {
        console.log(err);
      });
+}
+
+  getDate(){
+    console.log('Chose a date!');
+    inquirer.prompt(this.mainMenuChoice).then((response)) => {
+      switch (response.mainMenuChoice) {
+        case "Add new date":
+          this.newDate();
+          break;
+        default:
+        console.log("Invalid input");
+        this.main();
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   }
 
    clear(){ /* method definition */ }
