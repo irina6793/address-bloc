@@ -25,7 +25,7 @@ const inquirer = require('inquirer');
            this.addContact();
            break;
          case "Get Date":
-           this.getDate('November 26, 2018 18:15:30');
+           console.log(this.getDate().toString());
            break;
          case "Exit":
            this.exit();
@@ -46,9 +46,7 @@ const inquirer = require('inquirer');
          this.main();
        }
     getDate() {
-      console.log('November 26, 2018 18:15:30');
       return new Date();
-      this.main();
     }
 
       exit(){
