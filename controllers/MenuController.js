@@ -59,7 +59,7 @@ const inquirer = require('inquirer');
      }
 
        remindMe(){
-          return this.remind.length;
-      }
+          return "Learning is a life-long pursuit.";
+        }
 
 }
