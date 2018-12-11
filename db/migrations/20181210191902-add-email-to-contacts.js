@@ -5,9 +5,13 @@ module.exports = {
     return queryInterface.addColumn(
       "Contacts",
       "Email",
-      Sequelize.String
-    )
-    queryInterface.createTable(
+      {
+        type: Sequelize.String,
+        allowNull: false
+      }
+    ),
+
+  queryInterface.createTable(
       'EmailToContacts',
       {
         id: {
