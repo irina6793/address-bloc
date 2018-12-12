@@ -99,7 +99,25 @@ module.exports = class MenuController {
       }
           showContact(contact){
             this._printContact(contact);
-    }
+            inquirer.prompt(this.book.showContactQuestions)
+                .then((answer) => {
+                  switch(answer.selected){
+                    case "Delete contact":
+                      this.delete(contact);
+                      break;
+                    case "Main menu":
+                      this.main();
+                      break;
+                    default:
+                      console.log("Something went wrong.");
+                      this.showContact(contact);
+                  }
+                })
+                .catch((err) => {
+                  console.log(err);
+                  this.showContact(contact);
+                });
+      }
            _printContact(contact){
               console.log(`
                 name: ${contact.name}
@@ -113,16 +131,31 @@ module.exports = class MenuController {
             return new Date();
     }
 
-      exit(){
+    delete(contact){
+      inquirer.prompt(this.book.deleteConfirmQuestions)
+      .then((answer) => {
+        if(answer.confirmation){
+          this.book.delete(contact.id);
+          console.log("contact deleted!");
+          this.main();
+        } else {
+          console.log("contact not deleted");
+          this.showContact(contact);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        this.main();
+      });
+    }
+       exit(){
          console.log("Thanks for using AddressBloc!");
          process.exit();
        }
-
        getContactCount(){
          return this.contacts.length;
      }
-
-       remindMe(){
+        remindMe(){
           return "Learning is a life-long pursuit.";
         }
 }
