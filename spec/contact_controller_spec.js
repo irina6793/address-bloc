@@ -35,8 +35,8 @@ describe("ContactController", () => {
         .then((contacts) => {
           expect(contacts.length).toBe(0);
             done();
-          }
-        };
+        })
+      })
     it("should return an array of contacts when contacts are available", (done) => {
        this.book.addContact("Alice", "001-101-1010", "alice@example.com")
           .then(() => {
