@@ -12,7 +12,7 @@ describe("ContactController", () => {
          done();
        });
     });
-}
+})
 // #2
   describe("#addContact()", () => {
        it("should add a single contact into the book", (done) => {
@@ -28,7 +28,7 @@ describe("ContactController", () => {
       .catch((err) => {
         done();
   });
-}
+})
 
 describe("#getContacts()", () => {
     it("should return an empty array when no contacts are available", (done) => {
@@ -65,8 +65,8 @@ describe("#getContacts()", () => {
      console.log(err);
      done();
    });
- }
-}
+ })
+})
 
   describe("search methods", () => {
      const zelda = ["Zelda Smith", "000-100-111", "zelda@nintendo.com"];
@@ -181,5 +181,5 @@ describe("#getContacts()", () => {
       });
 });
 });
-});
+})
 })
