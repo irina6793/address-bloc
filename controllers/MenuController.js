@@ -10,7 +10,8 @@ module.exports = class MenuController {
            message: "Please choose from an option below: ",
            choices: [
              "Add new contact",
-             "Get Date",
+             "View all contacts",
+             "Get today's date",
              "Exit"
            ]
          }
@@ -25,7 +26,10 @@ module.exports = class MenuController {
          case "Add new contact":
            this.addContact();
            break;
-         case "Get Date":
+        case "View all contacts":
+          this.getContacts();
+          break;
+         case "Get today's date":
            console.log(this.getDate().toString());
            break;
          case "Exit":
@@ -53,7 +57,24 @@ module.exports = class MenuController {
                 });
               });
        }
-    getDate() {
+    getContacts(){
+         this.clear();
+              this.book.getContacts().then((contacts) => {
+              for (let contact of contacts) {
+                console.log(`
+                name: ${contact.name}
+                phone number: ${contact.phone}
+                email: ${contact.email}
+                ---------------`
+                );
+              }
+              this.main();
+            }).catch((err) => {
+              console.log(err);
+              this.main();
+            });
+          }
+      getDate() {
       return new Date();
     }
 
@@ -69,5 +90,4 @@ module.exports = class MenuController {
        remindMe(){
           return "Learning is a life-long pursuit.";
         }
-
 }
