@@ -15,10 +15,10 @@ describe("ContactController", () => {
 })
 // #2
   describe("#addContact()", () => {
-       it("should add a single contact into the book", (done) => {
-          this.book.addContact("Alice", "001-101-1010", "alice@example.com")
-          .then((contact) => {
-
+    it("should add a single contact into the book", (done) => {
+       this.book.addContact("Alice", "001-101-1010", "alice@example.com")
+       .then((contact) => {
+  })
 // #3
      expect(contact.name).toBe("Alice");
      expect(contact.phone).toBe("001-101-1010");
@@ -69,10 +69,11 @@ describe("#getContacts()", () => {
 })
 
   describe("search methods", () => {
-     const zelda = ["Zelda Smith", "000-100-111", "zelda@nintendo.com"];
-     const snake = ["Solid Snake", "100-100-100", "snake@konami.com"];
-     const magus = ["Magus Johnson", "101-010-101", "magus@squaresoft.com"];
-     const alloy = ["Alloy Rodriguez", "111-111-111", "allow@guerrilla-games.com"];
+    const zelda = ["Zelda Smith", "000-100-111", "zelda@nintendo.com"];
+    const snake = ["Solid Snake", "100-100-100", "snake@konami.com"];
+    const magus = ["Magus Johnson", "101-010-101", "magus@squaresoft.com"];
+    const alloy = ["Alloy Rodriguez", "111-111-111", "allow@guerrilla-games.com"];
+  })
 
   describe("#delete()", () => {
     it("should not remove any contacts that do not match the ID passed", (done) => {
@@ -88,15 +89,16 @@ describe("#getContacts()", () => {
               .then((contacts) => {
                 expect(contacts.length).toBe(1);
                 done();
-            })
-              .catch((err) => {
-                console.log(err);
-                done();
-              });
-            });
-          });
-        });
-      });
+    })
+    .catch((err) => {
+      console.log(err);
+      done();
+     });
+   });
+  });
+ });
+});
+
      it("should remove the contact that matches the ID passed", (done) => {
          this.book.addContact("Rick Deckard", "000-000-000", "null@null.com").then((contact) => {
         this.book.getContacts()
@@ -118,7 +120,7 @@ describe("#getContacts()", () => {
             });
           });
        });
-     });
+
 
   describe("#iterativeSearch()", () => {
     //rest of iterativeSearch suite
