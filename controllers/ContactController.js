@@ -57,22 +57,22 @@ module.exports = class ContactController {
            name: "confirmation",
            message: "are you sure you want to delete this contact?"
         }
-    ];       
+    ];
 }
     addContact(name, phone, email){/* method definition */}
     getContacts(){
       return Contact.findAll()
       }
-    iterativeSearch(contacts, target){
-      binarySearch(contacts, target){
-            let min = 0;
-            let max = contacts.length - 1;
-            let mid;
-
-            while(min <= max) {
-              // #1
-        mid = Math.floor((min + max) / 2);
-        let currentContact = contacts[mid];
+     binarySearch(contacts, target){
+        let min = 0;
+        let max = contacts.length - 1;
+        let mid;
+        while(min <= max) {
+          // #1
+    mid = Math.floor((min + max) / 2);
+    let currentContact = contacts[mid];
+        }
+      }
 
 // #2
         if(currentContact.name > target){ //target is before element at mid, eliminate upper bound
@@ -82,19 +82,15 @@ module.exports = class ContactController {
         } else { //element found, return it
           return contacts[mid];
         }
-      }
+           return null;
 
-      return null;
-    }
-
-     for(let contact of contacts){
+      for(let contact of contacts){
         if(contact.name.toLowerCase() === target.toLowerCase()){
           return contact;
         }
       }
       return null;
-    }
-  }
+
    search(name){
         return Contact.findOne({
           where: {name}
@@ -102,7 +98,7 @@ module.exports = class ContactController {
     }
 
     delete(id){
-          return Contact.destroy({
-            where: {id}
-          })
-    }
+       return Contact.destroy({
+          where: {id}
+      })
+}
