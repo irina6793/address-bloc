@@ -12,9 +12,9 @@ describe("ContactController", () => {
          done();
        });
     });
-
+}
 // #2
-   describe("#addContact()", () => {
+  describe("#addContact()", () => {
        it("should add a single contact into the book", (done) => {
           this.book.addContact("Alice", "001-101-1010", "alice@example.com")
           .then((contact) => {
@@ -28,8 +28,9 @@ describe("ContactController", () => {
       .catch((err) => {
         done();
   });
+}
 
-  describe("#getContacts()", () => {
+describe("#getContacts()", () => {
     it("should return an empty array when no contacts are available", (done) => {
       this.book.getContacts()
         .then((contacts) => {
@@ -64,6 +65,8 @@ describe("ContactController", () => {
      console.log(err);
      done();
    });
+ }
+}
 
   describe("search methods", () => {
      const zelda = ["Zelda Smith", "000-100-111", "zelda@nintendo.com"];
