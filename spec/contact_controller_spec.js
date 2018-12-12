@@ -121,7 +121,6 @@ describe("#getContacts()", () => {
           });
        });
 
-
   describe("#iterativeSearch()", () => {
     //rest of iterativeSearch suite
   });
