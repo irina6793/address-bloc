@@ -97,3 +97,37 @@ describe("ContactController", () => {
     expect(ContactController).toBeDefined();
   });
 });
+  describe("#search()", () => {
+      it("should return null when a contact was not found", (done) => {
+        this.book.addContact(...zelda)
+        .then(() => {
+          this.book.search("Solid Snake")
+          .then((contact) => {
+            expect(contact).toBeNull();
+            done();
+          })
+          .catch((err) => {
+            console.log(err);
+            done();
+          });
+        });
+      });
+
+      it("should return the contact when found", (done) => {
+        this.book.addContact(...snake)
+        .then(() => {
+          this.book.search("Solid Snake")
+          .then((contact) => {
+            expect(contact).not.toBeNull();
+            expect(contact.name).toBe("Solid Snake");
+            expect(contact.phone).toBe("100-100-100");
+            expect(contact.email).toBe("snake@konami.com");
+            done();
+          })
+          .catch((err) => {
+            console.log(err);
+            done();
+          });
+        });
+      });
+});
