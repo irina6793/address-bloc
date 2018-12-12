@@ -40,7 +40,6 @@ describe("ContactController", () => {
          console.log(err);
           done();
     });
-});
 
   it("should return an array of contacts when contacts are available", (done) => {
      this.book.addContact("Alice", "001-101-1010", "alice@example.com")
@@ -50,13 +49,11 @@ describe("ContactController", () => {
       expect(contacts.length).toBe(1);
      done();
  });
-})
+});
    .catch((err) => {
      console.log(err);
      done();
- });
 });
-
   it("should return null when contact is not found", (done) => {
     this.book.addContact(...zelda)
     .then(() => {
@@ -69,10 +66,8 @@ describe("ContactController", () => {
      console.log(err);
      done();
    });
- });
-});
 
-   describe("search methods", () => {
+  describe("search methods", () => {
      const zelda = ["Zelda Smith", "000-100-111", "zelda@nintendo.com"];
      const snake = ["Solid Snake", "100-100-100", "snake@konami.com"];
      const magus = ["Magus Johnson", "101-010-101", "magus@squaresoft.com"];
@@ -99,14 +94,8 @@ describe("ContactController", () => {
                 console.log(err);
                 done();
               });
-            });
-          });
-        });
-     });
-   });
- });
 
-it("should be defined", () => {
+      it("should be defined", () => {
     expect(ContactController).toBeDefined();
   });
 });
