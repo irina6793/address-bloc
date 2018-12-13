@@ -37,7 +37,11 @@ describe("#getContacts()", () => {
           expect(contacts.length).toBe(0);
             done();
         })
-      })
+        .catch((err) => {
+           console.log(err);
+            done();
+      });
+    });
     it("should return an array of contacts when contacts are available", (done) => {
        this.book.addContact("Alice", "001-101-1010", "alice@example.com")
           .then(() => {
@@ -46,11 +50,11 @@ describe("#getContacts()", () => {
                expect(contacts.length).toBe(1);
                done();
            });
-          });
-  })
-      .catch((err) => {
-         console.log(err);
-          done();
+        })
+        .catch((err) => {
+           console.log(err);
+            done();
+      });
     });
 });
   it("should return null when contact is not found", (done) => {
@@ -122,7 +126,14 @@ describe("#getContacts()", () => {
        });
 
   describe("#iterativeSearch()", () => {
-    //rest of iterativeSearch suite
+    const zelda = ["Zelda Smith", "000-100-111", "zelda@nintendo.com"];
+          const snake = ["Solid Snake", "100-100-100", "snake@konami.com"];
+          const magus = ["Magus Johnson", "101-010-101", "magus@squaresoft.com"];
+          const alloy = ["Alloy Rodriguez", "111-111-111", "allow@guerrilla-games.com"];
+
+          it("should return null when called with an empty array", () => {
+            expect(this.book.iterativeSearch([], "Alloy")).toBeNull();
+          });
   });
 
     it("should return the contact if found", (done) => {
@@ -163,6 +174,7 @@ describe("#getContacts()", () => {
         });
       });
     });
+
 
       it("should return the contact when found", (done) => {
         this.book.addContact(...snake)

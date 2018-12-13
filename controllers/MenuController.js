@@ -66,11 +66,7 @@ module.exports = class MenuController {
               this.book.getContacts().then((contacts) => {
               for (let contact of contacts) {
                 console.log(`
-                name: ${contact.name}
-                phone number: ${contact.phone}
-                email: ${contact.email}
-                ---------------`
-                );
+                `);
               }
               this.main();
             }).catch((err) => {

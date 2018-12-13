@@ -62,7 +62,7 @@ constructor(){
     addContact(name, phone, email){/* method definition */}
     getContacts(){
       return Contact.findAll()
-      }
+    }
      binarySearch(contacts, target){
         let min = 0;
         let max = contacts.length - 1;
@@ -86,7 +86,9 @@ constructor(){
          }
         }
       }
-
+      iterativeSearch(contacts, target){
+            //method definition
+    }
 // #2
 
   search(name){
