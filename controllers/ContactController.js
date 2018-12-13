@@ -59,11 +59,20 @@ constructor(){
         }
     ];
 }
-    addContact(name, phone, email){/* method definition */}
+    addContact(name, phone, email){
+      return Contact.create({name, phone,email})
+    }
     getContacts(){
       return Contact.findAll()
     }
-     iterativeSearch(contacts, target){/* method definition */}
+    iterativeSearch(contacts, target){
+       for(let contact of contacts){
+               if(contact.name.toLowerCase() === target.toLowerCase()){
+                 return contact;
+               }
+             }
+          return null;
+     }
      binarySearch(contacts, target){
         let min = 0;
         let max = contacts.length - 1;
