@@ -1,35 +1,26 @@
 const ContactController = require("../controllers/ContactController");
 const sequelize = require("../db/models/index").sequelize;
 
-describe("ContactController", () => {
-  beforeEach((done) => {
-         this.book = new ContactController();
-  // #1
-       sequelize.sync({force: true}).then((res) => {
-         done();
-       })
-       .catch((err) => {
-         done();
-       });
-    });
+// #1
+describe("#addContact()", () => {
+  it("should add a single contact into the book", (done) => {
+     this.book.addContact("Alice", "001-101-1010", "alice@example.com")
+     .then((contact) => {
+})
 
 // #2
-  describe("#addContact()", () => {
-    it("should add a single contact into the book", (done) => {
-       this.book.addContact("Alice", "001-101-1010", "alice@example.com")
-       .then((contact) => {
-  })
+expect(contact.name).toBe("Alice");
+expect(contact.phone).toBe("001-101-1010");
+expect(contact.email).toBe("alice@example.com");
+ done();
+})
+
 // #3
-     expect(contact.name).toBe("Alice");
-     expect(contact.phone).toBe("001-101-1010");
-     expect(contact.email).toBe("alice@example.com");
-      done();
-    })
-      .catch((err) => {
+   .catch((err) => {
         done();
   });
 
-
+//4
 describe("#getContacts()", () => {
     it("should return an empty array when no contacts are available", (done) => {
       this.book.getContacts()
@@ -56,7 +47,6 @@ describe("#getContacts()", () => {
             done();
       });
     });
-});
   it("should return null when contact is not found", (done) => {
     this.book.addContact(...zelda)
     .then(() => {
@@ -70,6 +60,7 @@ describe("#getContacts()", () => {
      done();
    });
  });
+});
 });
 
   describe("search methods", () => {
@@ -110,6 +101,7 @@ describe("#getContacts()", () => {
         });
       });
     });
+})
 
   describe("#binarySearch()", () => {
       function sort(contacts){
@@ -160,7 +152,7 @@ describe("#getContacts()", () => {
                });
              });
          });
-      });
+
 
   describe("#delete()", () => {
     it("should not remove any contacts that do not match the ID passed", (done) => {
@@ -243,6 +235,5 @@ describe("#getContacts()", () => {
       it("should be defined", () => {
     expect(ContactController).toBeDefined();
   });
-});
 });
 });
