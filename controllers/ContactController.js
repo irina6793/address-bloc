@@ -83,27 +83,14 @@ constructor(){
        }
          return null;
          }
+      search(name){
+        return Contact.findOne({
+        where: {name}
+        });
       }
-
-      iterativeSearch(contacts, target){/* method definition */}
-        for(let contact of contacts){
-        if(contact.name.toLowerCase() === target.toLowerCase()){
-          return contact;
-        }
-      }
-      return null;
+      delete(id){
+         return Contact.destroy({
+         where: {id}
+      })
     }
-// #2
-
-  search(name){
-    return Contact.findOne({
-    where: {name}
-  });
-}
-
-  delete(id){
-     return Contact.destroy({
-     where: {id}
-  })
-}
-}
+  }

@@ -114,14 +114,6 @@ module.exports = class MenuController {
                   this.showContact(contact);
                 });
       }
-           _printContact(contact){
-              console.log(`
-                name: ${contact.name}
-                phone number: ${contact.phone}
-                email: ${contact.email}
-                  ---------------`
-          );
-      }
 
         getDate() {
             return new Date();
