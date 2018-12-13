@@ -155,13 +155,14 @@ describe("#getContacts()", () => {
           .then((contact) => {
             expect(contact).toBeNull();
             done();
-          })
-          .catch((err) => {
+          });
+            .catch((err) => {
             console.log(err);
             done();
           });
         });
       });
+    });
 
       it("should return the contact when found", (done) => {
         this.book.addContact(...snake)
