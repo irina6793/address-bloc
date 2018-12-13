@@ -1,37 +1,53 @@
 const ContactController = require("../controllers/ContactController");
 const sequelize = require("../db/models/index").sequelize;
 
-// #1
+describe("ContactController", () => {
+  beforeEach((done) => {
+    this.book = new ContactController();
+//#1
+    sequelize.sync({force: true}).then((res) => {
+      done();
+   })
+    .catch((err) => {
+      done();
+    });
+  });
+//#2
 describe("#addContact()", () => {
   it("should add a single contact into the book", (done) => {
-     this.book.addContact("Alice", "001-101-1010", "alice@example.com")
-     .then((contact) => {
-})
+  this.book.addContact("Alice", "001-101-1010", "alice@example.com")
+  .then((contact) => {
 
-// #2
+//#3
 expect(contact.name).toBe("Alice");
 expect(contact.phone).toBe("001-101-1010");
 expect(contact.email).toBe("alice@example.com");
- done();
+done();
 })
-
-// #3
-   .catch((err) => {
-        done();
+.catch((err) => {
+done();
+});
+});
+});
+it("should be defined", () => {
+  expect(ContactController).toBeDefined();
   });
+});
 
-//4
+//#4
 describe("#getContacts()", () => {
-    it("should return an empty array when no contacts are available", (done) => {
-      this.book.getContacts()
-        .then((contacts) => {
-          expect(contacts.length).toBe(0);
-            done();
-        })
-        .catch((err) => {
-           console.log(err);
-            done();
-      });
+  it("should return an empty array when no contacts are available", (done) => {
+  this.book.getContacts()
+  .then((contacts) => {
+    expect(contacts.length).toBe(0);
+    done();
+  })
+  .catch((err) => {
+     console.log(err);
+      done();
+  });
+});
+
     });
     it("should return an array of contacts when contacts are available", (done) => {
        this.book.addContact("Alice", "001-101-1010", "alice@example.com")
@@ -235,5 +251,4 @@ describe("#getContacts()", () => {
       it("should be defined", () => {
     expect(ContactController).toBeDefined();
   });
-});
 });
