@@ -63,6 +63,7 @@ constructor(){
     getContacts(){
       return Contact.findAll()
     }
+     iterativeSearch(contacts, target){/* method definition */}
      binarySearch(contacts, target){
         let min = 0;
         let max = contacts.length - 1;
@@ -71,23 +72,26 @@ constructor(){
           // #1
          mid = Math.floor((min + max) / 2);
          let currentContact = contacts[mid];
-         if(currentContact.name > target){
+         //#2
+         if(currentContact.name > target){//target is before element at mid, eliminate upper bound
            max = mid - 1;
-         } else if(currentContact.name < target){
+         } else if(currentContact.name < target){//target is after element at mid, eliminate lower bound
            min = mid - 1;
-         } else {
+         } else {//element found, return it
            return contacts[mid];
          }
-         for(let contact of contacts){
-           if(contact.name.toLowerCase() === target.toLowerCase()){
-             return contact;
-           }
-             return null;
+       }
+         return null;
          }
+      }
+
+      iterativeSearch(contacts, target){/* method definition */}
+        for(let contact of contacts){
+        if(contact.name.toLowerCase() === target.toLowerCase()){
+          return contact;
         }
       }
-      iterativeSearch(contacts, target){
-            //method definition
+      return null;
     }
 // #2
 
