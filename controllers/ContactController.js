@@ -2,7 +2,7 @@ const Contact = require("../db/models").Contact;
 
 module.exports = class ContactController {
 
-  constructor(){
+constructor(){
     this.contacts = [];
     this.addContactQuestions = [
       {
@@ -82,14 +82,13 @@ module.exports = class ContactController {
         } else { //element found, return it
           return contacts[mid];
         }
-           return null;
-
-      for(let contact of contacts){
-        if(contact.name.toLowerCase() === target.toLowerCase()){
-          return contact;
+        for(let contact of contacts){
+          if(contact.name.toLowerCase() === target.toLowerCase()){
+            return contact;
+          }
         }
-      }
-      return null;
+        return null;
+
 
    search(name){
         return Contact.findOne({
@@ -97,8 +96,9 @@ module.exports = class ContactController {
         });
     }
 
+
     delete(id){
        return Contact.destroy({
           where: {id}
       })
-}
+    }
