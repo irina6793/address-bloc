@@ -88,17 +88,18 @@ describe("#iterativeSearch()", () => {
   const magus = ["Magus Johnson", "101-010-101", "magus@squaresoft.com"];
   const alloy = ["Alloy Rodriguez", "111-111-111", "allow@guerrilla-games.com"];
 //#7
-beforeEach((done) => {
-   book = new ContactController();
-//#1
-  sequelize.sync({force: true}).then((res) => {
-    done();
- })
-  .catch((err) => {
-    done();
-  });
-});
+
   it("should return null when contact is not found", (done) => {
+    beforeEach((done) => {
+       book = new ContactController();
+  //#1
+      sequelize.sync({force: true}).then((res) => {
+        done();
+     })
+      .catch((err) => {
+        done();
+      });
+    });
      book.addContact(...zelda)
      .then(() => {
        book.getContacts()
@@ -114,6 +115,16 @@ beforeEach((done) => {
 });
 //#8
  it("should return the contact if found", (done) => {
+   beforeEach((done) => {
+      book = new ContactController();
+ //#1
+     sequelize.sync({force: true}).then((res) => {
+       done();
+    })
+     .catch((err) => {
+       done();
+     });
+   });
   book.addContact(...alloy)
   .then(() => {
     book.addContact(...magus)
@@ -135,6 +146,16 @@ beforeEach((done) => {
  });
  //#9
  it("should return null when called with an empty array", () => {
+   beforeEach((done) => {
+      book = new ContactController();
+ //#1
+     sequelize.sync({force: true}).then((res) => {
+       done();
+    })
+     .catch((err) => {
+       done();
+     });
+   });
    expect(book.iterativeSearch([], "Alloy")).toBeNull();
  });
 });
