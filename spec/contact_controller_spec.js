@@ -12,6 +12,7 @@ describe("ContactController", () => {
       done();
     });
   });
+});
 //#2
 describe("#addContact()", () => {
   it("should add a single contact into the book", (done) => {
@@ -25,6 +26,7 @@ describe("#addContact()", () => {
 //#3
 .catch((err) => {
 done();
+});
 });
 });
 
@@ -41,6 +43,7 @@ describe("#getContacts()", () => {
       done();
   });
 });
+
 //#5
   it("should return an array of contacts when contacts are available", (done) => {
   this.book.addContact("Alice", "001-101-1010", "alice@example.com")
@@ -55,6 +58,7 @@ describe("#getContacts()", () => {
     console.log(err);
     done();
   });
+});
 });
 //#6
 describe("#iterativeSearch()", () => {
@@ -109,6 +113,7 @@ describe("search methods", () => {
     const snake = ["Solid Snake", "100-100-100", "snake@konami.com"];
     const magus = ["Magus Johnson", "101-010-101", "magus@squaresoft.com"];
     const alloy = ["Alloy Rodriguez", "111-111-111", "allow@guerrilla-games.com"];
+  });
 //#11
 describe("#delete()", () => {
   it("should not remove any contacts that do not match the ID passed", (done) => {
@@ -133,9 +138,10 @@ describe("#delete()", () => {
          });
        });
      });
+   });
 describe("#iterativeSearch()", () => {
   //rest of iterativeSearch suite
-});
+
 //#12
 it("should remove the contact that matches the ID passed", (done) => {
   this.book.addContact("Rick Deckard", "000-000-000", "null@null.com").then((contact) => {
@@ -157,6 +163,8 @@ it("should remove the contact that matches the ID passed", (done) => {
            });
          });
        });
+  });
+});
  describe("#binarySearch()", () => {
   function sort(contacts){
           return contacts.sort((a, b) => {
@@ -206,6 +214,7 @@ it("should remove the contact that matches the ID passed", (done) => {
            });
          });
        });
+     });
 //#16
   describe("#search()", () => {
     it("should return null when a contact was not found", (done) => {
@@ -240,15 +249,7 @@ it("should remove the contact that matches the ID passed", (done) => {
           });
         });
       });
-
+});
     it("should be defined", () => {
     expect(ContactController).toBeDefined();
     });
-   });
-  });
- });
-});
-});
-});
-});
-});
