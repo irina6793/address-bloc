@@ -15,6 +15,17 @@ describe("ContactController", () => {
 });
 //#2
 describe("#addContact()", () => {
+  beforeEach((done) => {
+     book = new ContactController();
+//#1
+    sequelize.sync({force: true}).then((res) => {
+      done();
+   })
+    .catch((err) => {
+      done();
+    });
+  });
+
   it("should add a single contact into the book", (done) => {
   book.addContact("Alice", "001-101-1010", "alice@example.com")
   .then((contact) => {
@@ -32,6 +43,16 @@ done();
 
 //#4
 describe("#getContacts()", () => {
+  beforeEach((done) => {
+     book = new ContactController();
+//#1
+    sequelize.sync({force: true}).then((res) => {
+      done();
+   })
+    .catch((err) => {
+      done();
+    });
+  });
   it("should return an empty array when no contacts are available", (done) => {
   book.getContacts()
   .then((contacts) => {
@@ -62,6 +83,16 @@ describe("#getContacts()", () => {
 });
 //#6
 describe("#iterativeSearch()", () => {
+  beforeEach((done) => {
+     book = new ContactController();
+//#1
+    sequelize.sync({force: true}).then((res) => {
+      done();
+   })
+    .catch((err) => {
+      done();
+    });
+  });
   const zelda = ["Zelda Smith", "000-100-111", "zelda@nintendo.com"];
   const snake = ["Solid Snake", "100-100-100", "snake@konami.com"];
   const magus = ["Magus Johnson", "101-010-101", "magus@squaresoft.com"];
@@ -109,6 +140,16 @@ describe("#iterativeSearch()", () => {
 });
 //#10
 describe("search methods", () => {
+  beforeEach((done) => {
+     book = new ContactController();
+//#1
+    sequelize.sync({force: true}).then((res) => {
+      done();
+   })
+    .catch((err) => {
+      done();
+    });
+  });
     const zelda = ["Zelda Smith", "000-100-111", "zelda@nintendo.com"];
     const snake = ["Solid Snake", "100-100-100", "snake@konami.com"];
     const magus = ["Magus Johnson", "101-010-101", "magus@squaresoft.com"];
@@ -116,6 +157,16 @@ describe("search methods", () => {
   });
 //#11
 describe("#delete()", () => {
+  beforeEach((done) => {
+     book = new ContactController();
+//#1
+    sequelize.sync({force: true}).then((res) => {
+      done();
+   })
+    .catch((err) => {
+      done();
+    });
+  });
   it("should not remove any contacts that do not match the ID passed", (done) => {
        book.addContact("Rick Deckard", "000-000-000", "null@null.com")
        .then(() => {
@@ -140,6 +191,16 @@ describe("#delete()", () => {
      });
    });
 describe("#iterativeSearch()", () => {
+  beforeEach((done) => {
+     book = new ContactController();
+//#1
+    sequelize.sync({force: true}).then((res) => {
+      done();
+   })
+    .catch((err) => {
+      done();
+    });
+  });
   //rest of iterativeSearch suite
 
 //#12
@@ -166,6 +227,16 @@ it("should remove the contact that matches the ID passed", (done) => {
   });
 });
  describe("#binarySearch()", () => {
+   beforeEach((done) => {
+      book = new ContactController();
+ //#1
+     sequelize.sync({force: true}).then((res) => {
+       done();
+    })
+     .catch((err) => {
+       done();
+     });
+   });
   function sort(contacts){
           return contacts.sort((a, b) => {
             if(a.name > b.name) return 1;
@@ -217,6 +288,16 @@ it("should remove the contact that matches the ID passed", (done) => {
      });
 //#16
   describe("#search()", () => {
+    beforeEach((done) => {
+       book = new ContactController();
+  //#1
+      sequelize.sync({force: true}).then((res) => {
+        done();
+     })
+      .catch((err) => {
+        done();
+      });
+    });
     it("should return null when a contact was not found", (done) => {
     book.addContact(...zelda)
     .then(() => {
