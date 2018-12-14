@@ -83,21 +83,21 @@ describe("#getContacts()", () => {
 });
 //#6
 describe("#iterativeSearch()", () => {
-  beforeEach((done) => {
-     book = new ContactController();
-//#1
-    sequelize.sync({force: true}).then((res) => {
-      done();
-   })
-    .catch((err) => {
-      done();
-    });
-  });
   const zelda = ["Zelda Smith", "000-100-111", "zelda@nintendo.com"];
   const snake = ["Solid Snake", "100-100-100", "snake@konami.com"];
   const magus = ["Magus Johnson", "101-010-101", "magus@squaresoft.com"];
   const alloy = ["Alloy Rodriguez", "111-111-111", "allow@guerrilla-games.com"];
 //#7
+beforeEach((done) => {
+   book = new ContactController();
+//#1
+  sequelize.sync({force: true}).then((res) => {
+    done();
+ })
+  .catch((err) => {
+    done();
+  });
+});
   it("should return null when contact is not found", (done) => {
      book.addContact(...zelda)
      .then(() => {
@@ -140,6 +140,12 @@ describe("#iterativeSearch()", () => {
 });
 //#10
 describe("search methods", () => {
+
+    const zelda = ["Zelda Smith", "000-100-111", "zelda@nintendo.com"];
+    const snake = ["Solid Snake", "100-100-100", "snake@konami.com"];
+    const magus = ["Magus Johnson", "101-010-101", "magus@squaresoft.com"];
+    const alloy = ["Alloy Rodriguez", "111-111-111", "allow@guerrilla-games.com"];
+  });
   beforeEach((done) => {
      book = new ContactController();
 //#1
@@ -149,11 +155,6 @@ describe("search methods", () => {
     .catch((err) => {
       done();
     });
-  });
-    const zelda = ["Zelda Smith", "000-100-111", "zelda@nintendo.com"];
-    const snake = ["Solid Snake", "100-100-100", "snake@konami.com"];
-    const magus = ["Magus Johnson", "101-010-101", "magus@squaresoft.com"];
-    const alloy = ["Alloy Rodriguez", "111-111-111", "allow@guerrilla-games.com"];
   });
 //#11
 describe("#delete()", () => {
