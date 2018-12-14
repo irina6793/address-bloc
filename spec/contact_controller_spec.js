@@ -3,7 +3,7 @@ const sequelize = require("../db/models/index").sequelize;
 
 describe("ContactController", () => {
   beforeEach((done) => {
-    this.book = new ContactController();
+     book = new ContactController();
 //#1
     sequelize.sync({force: true}).then((res) => {
       done();
@@ -16,7 +16,7 @@ describe("ContactController", () => {
 //#2
 describe("#addContact()", () => {
   it("should add a single contact into the book", (done) => {
-  this.book.addContact("Alice", "001-101-1010", "alice@example.com")
+  book.addContact("Alice", "001-101-1010", "alice@example.com")
   .then((contact) => {
    expect(contact.name).toBe("Alice");
    expect(contact.phone).toBe("001-101-1010");
@@ -33,7 +33,7 @@ done();
 //#4
 describe("#getContacts()", () => {
   it("should return an empty array when no contacts are available", (done) => {
-  this.book.getContacts()
+  book.getContacts()
   .then((contacts) => {
     expect(contacts.length).toBe(0);
     done();
@@ -46,9 +46,9 @@ describe("#getContacts()", () => {
 
 //#5
   it("should return an array of contacts when contacts are available", (done) => {
-  this.book.addContact("Alice", "001-101-1010", "alice@example.com")
+  book.addContact("Alice", "001-101-1010", "alice@example.com")
   .then(() => {
-  this.book.getContacts()
+  book.getContacts()
   .then((contacts) => {
    expect(contacts.length).toBe(1);
    done();
@@ -68,11 +68,11 @@ describe("#iterativeSearch()", () => {
   const alloy = ["Alloy Rodriguez", "111-111-111", "allow@guerrilla-games.com"];
 //#7
   it("should return null when contact is not found", (done) => {
-     this.book.addContact(...zelda)
+     book.addContact(...zelda)
      .then(() => {
-       this.book.getContacts()
+       book.getContacts()
       .then((contacts) => {
-        expect(this.book.iterativeSearch(contacts, "Alloy Rodriguez")).toBeNull();
+        expect(book.iterativeSearch(contacts, "Alloy Rodriguez")).toBeNull();
         done();
    })
    .catch((err) => {
@@ -83,13 +83,13 @@ describe("#iterativeSearch()", () => {
 });
 //#8
  it("should return the contact if found", (done) => {
-  this.book.addContact(...alloy)
+  book.addContact(...alloy)
   .then(() => {
-    this.book.addContact(...magus)
+    book.addContact(...magus)
     .then(() => {
-      this.book.getContacts()
+      book.getContacts()
       .then((contacts) => {
-      let contact = this.book.iterativeSearch(contacts, "Magus Johnson");
+      let contact = book.iterativeSearch(contacts, "Magus Johnson");
       expect(contact.name).toBe("Magus Johnson");
       expect(contact.phone).toBe("101-010-101");
       expect(contact.email).toBe("magus@squaresoft.com");
@@ -104,7 +104,7 @@ describe("#iterativeSearch()", () => {
  });
  //#9
  it("should return null when called with an empty array", () => {
-   expect(this.book.iterativeSearch([], "Alloy")).toBeNull();
+   expect(book.iterativeSearch([], "Alloy")).toBeNull();
  });
 });
 //#10
@@ -117,15 +117,15 @@ describe("search methods", () => {
 //#11
 describe("#delete()", () => {
   it("should not remove any contacts that do not match the ID passed", (done) => {
-       this.book.addContact("Rick Deckard", "000-000-000", "null@null.com")
+       book.addContact("Rick Deckard", "000-000-000", "null@null.com")
        .then(() => {
-         this.book.getContacts()
+         book.getContacts()
          .then((contacts) => {
            expect(contacts[0].name).toBe("Rick Deckard");
            expect(contacts.length).toBe(1);
-           this.book.delete(99)
+           book.delete(99)
            .then(() => {
-             this.book.getContacts()
+             book.getContacts()
              .then((contacts) => {
                expect(contacts.length).toBe(1);
                done();
@@ -144,14 +144,14 @@ describe("#iterativeSearch()", () => {
 
 //#12
 it("should remove the contact that matches the ID passed", (done) => {
-  this.book.addContact("Rick Deckard", "000-000-000", "null@null.com").then((contact) => {
-         this.book.getContacts()
+  book.addContact("Rick Deckard", "000-000-000", "null@null.com").then((contact) => {
+         book.getContacts()
          .then((contacts) => {
            expect(contacts[0].name).toBe("Rick Deckard");
            expect(contacts.length).toBe(1);
-           this.book.delete(contact.id)
+           book.delete(contact.id)
            .then(() => {
-             this.book.getContacts()
+             book.getContacts()
              .then((contacts) => {
                expect(contacts.length).toBe(0);
                done();
@@ -175,15 +175,15 @@ it("should remove the contact that matches the ID passed", (done) => {
     }
 //#13
   it("should return null when called with an empty array", () => {
-  expect(this.book.binarySearch([], "Alloy Rodriguez")).toBeNull();
+  expect(book.binarySearch([], "Alloy Rodriguez")).toBeNull();
 });
 //#14
   it("should return null when contact is not found", (done) => {
-    this.book.addContact(...zelda)
+    book.addContact(...zelda)
     .then(() => {
-    this.book.getContacts()
+    book.getContacts()
     .then((contacts) => {
-     expect(this.book.binarySearch(sort(contacts), "Alloy Rodriguez")).toBeNull();
+     expect(book.binarySearch(sort(contacts), "Alloy Rodriguez")).toBeNull();
      done();
  })
     .catch((err) => {
@@ -194,12 +194,12 @@ it("should remove the contact that matches the ID passed", (done) => {
 });
 //#15
  it("should return the contact if found", (done) => {
-         this.book.addContact(...alloy).then(() => {
-           this.book.addContact(...magus).then(() => {
-             this.book.addContact(...zelda).then(() => {
-               this.book.addContact(...snake).then(() => {
-                 this.book.getContacts().then((contacts) => {
-                   let contact = this.book.binarySearch(sort(contacts), "Magus Johnson");
+         book.addContact(...alloy).then(() => {
+           book.addContact(...magus).then(() => {
+             book.addContact(...zelda).then(() => {
+               book.addContact(...snake).then(() => {
+                 book.getContacts().then((contacts) => {
+                   let contact = book.binarySearch(sort(contacts), "Magus Johnson");
                    expect(contact.name).toBe("Magus Johnson");
                    expect(contact.phone).toBe("101-010-101");
                    expect(contact.email).toBe("magus@squaresoft.com");
@@ -218,9 +218,9 @@ it("should remove the contact that matches the ID passed", (done) => {
 //#16
   describe("#search()", () => {
     it("should return null when a contact was not found", (done) => {
-    this.book.addContact(...zelda)
+    book.addContact(...zelda)
     .then(() => {
-    this.book.search("Solid Snake")
+    book.search("Solid Snake")
     .then((contact) => {
     expect(contact).toBeNull();
     done();
@@ -233,9 +233,9 @@ it("should remove the contact that matches the ID passed", (done) => {
 });
 //#17
  it("should return the contact when found", (done) => {
-  this.book.addContact(...snake)
+  book.addContact(...snake)
   .then(() => {
-  this.book.search("Solid Snake")
+  book.search("Solid Snake")
   .then((contact) => {
   expect(contact).not.toBeNull();
   expect(contact.name).toBe("Solid Snake");
