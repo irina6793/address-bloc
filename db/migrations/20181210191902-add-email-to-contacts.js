@@ -2,15 +2,6 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.addColumn(
-      "Contacts",
-      "Email",
-      {
-        type: Sequelize.String,
-        allowNull: false
-      }
-    ),
-
   queryInterface.createTable(
       'EmailToContacts',
       {
@@ -28,8 +19,22 @@ module.exports = {
         name: {
           type: Sequelize.STRING
         }
-      )};
-  },
+      }, {
+        timeStamps: true
+      }
+    )}
+
+    /*
+    return queryInterface.addColumn(
+      "Contacts",
+      "Email",
+      {
+        type: Sequelize.String,
+        allowNull: false
+      }
+    ),
+    */
+
 
   down: (queryInterface, Sequelize) => {
     return queryInterface.removeColumn('Contacts', 'Email');
