@@ -1,10 +1,11 @@
 {
   "name": "address-bloc",
   "version": "1.0.0",
-  "description": "An application to model an address book in Node",
-  "main": "\u001b[D\u001b[D\u001b[D\u001bapp\u001b[C\u001b[C\u001b[C\u001b\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C",
+  "description": "An application similiar to an address book",
+  "main": "index.js",
   "scripts": {
-    "test": "set NODE_ENV=test && jasmine"
+    "test": "export NODE_ENV=test && jasmine",
+    "start": "node app.js"
   },
   "author": "Irina",
   "license": "ISC",
